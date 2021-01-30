@@ -7,10 +7,13 @@ from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
+from accountapp.forms import CreateUserForm
 
-class AccountCreateView(CreateView):
-    model = User
-    form_class = UserCreationForm
-    success_url = reverse_lazy('accountapp:create')
-    template_name = 'accountapp/create.html'
 
+def index(request):
+    return render(request, 'accountapp/base.html')
+
+class CreateUserView(CreateView):
+    template_name = 'registration/signup.html'
+    form_class = CreateUserForm
+    success_url = reverse_lazy('accountapp:index')
