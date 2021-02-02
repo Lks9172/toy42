@@ -28,7 +28,7 @@
     {% if article_list %}
     <div class="container">
         {% for article in article_list %}
-            <a href="{% url 'articleapp:detail' pk=article.pk %}">
+            <a href="{% url 'accountapp:detail' pk=article.pk %}">
                 {% include 'snippets/card.html' with article=article %}
             </a>
         {% endfor %}
@@ -42,7 +42,7 @@
     {%  include 'snippets/pagination.html' with page_obj=page_obj %}
 
     <div style="text-align: center">
-        <a href="{% url 'articleapp:create'%}" class="btn btn-dark rounded-pill mt-3 mb-3 px-3">
+        <a href="{% url 'accountapp:create'%}" class="btn btn-dark rounded-pill mt-3 mb-3 px-3">
             Create Article
         </a>
 
