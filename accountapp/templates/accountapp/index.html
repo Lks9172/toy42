@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <div style="text-align: center;margin: 4rem auto">
+
+<span class='green_window'>
+<input id=text type="text" class='input_text' name="search" onkeydown="enterSearch()" placeholder="검색어를 입력해주세요"/></span>
+<input type="button" class='sch_smit' value="검색" onclick="myFunction()"/>
+
+    </div>
+{% endblock %}
