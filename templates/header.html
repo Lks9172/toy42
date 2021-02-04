@@ -5,9 +5,10 @@
             </h1>
         </div>
         <div class="pragmatic_header_navbar">
+            <a href="{% url 'articleapp:index' %}">
             <span>모집중인 프로젝트</span>
             </a>
-            <a  class="pragmatic_header_nav">
+            <a class="pragmatic_header_nav">
             <span>프로젝트 후기</span>
             </a>
 
@@ -19,7 +20,7 @@
                 <span>회원가입</span>
             </a>
             {% else %}
-            <a  class="pragmatic_header_nav">
+            <a href="{% url 'articleapp:create' %}" class="pragmatic_header_nav">
             <span>모집글작성</span>
             </a>
             <span class="dropdown event-dropdown">

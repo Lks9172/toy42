@@ -41,4 +41,4 @@ def createproject(request):
 def index(request):
     articles = Article.objects.all()
     members = TeamMember.objects.all()
-    return render(request, 'articleapp/index.html', {'articles': articles, 'members': members})
+    return render(request, 'articleapp/list.html', {'articles': articles, 'members': members})

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+
+{% block content %}
+    <div class="btn-group">
+        <a href ="{% url 'articleapp:create' %}" class = "btn btn-info">Add Project</a>
+    </div>
+    <p></p>
+    <table class = "table">
+        <thead>
+            <tr>
+                <th scope = "col">#</th>
+                <th scope = "col">제목</th>
+                <th scope = "col">작성자</th>
+                <th scope = "col">내용</th>
+                <th scope = "col">Modify</th>
+                <th scope = "col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for article in articles %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td><a >{{article.title}}</a></td>
+                <td><a >{{article.Publisher}}</a></td>
+                <td><a >{{article.Introduce}}</a> </td>
+                <td><a class="btn btn-success btn-sm">Modify</a></td>
+                <td><a class="btn btn-danger btn-sm">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
