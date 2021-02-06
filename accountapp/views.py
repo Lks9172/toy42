@@ -11,7 +11,7 @@ from accountapp.forms import CreateUserForm
 
 
 def index(request):
-    return render(request, 'accountapp/create.html')
+    return render(request, 'accountapp/42toy.html')
 
 class CreateUserView(CreateView):
     template_name = 'registration/signup.html'
