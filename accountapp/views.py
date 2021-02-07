@@ -8,10 +8,15 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
 from accountapp.forms import CreateUserForm
+from articleapp.models import Article, TeamMember
 
 
 def index(request):
-    return render(request, 'accountapp/42toy.html')
+    article_list = Article.objects.all()[:6]
+    members = TeamMember.objects.all()
+    return render(request, 'accountapp/42toy.html', {
+                                                     'members': members,  'article_list':article_list})
+
 
 class CreateUserView(CreateView):
     template_name = 'registration/signup.html'
