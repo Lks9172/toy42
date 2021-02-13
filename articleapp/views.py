@@ -3,10 +3,10 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from django.views.generic import FormView
+from django.views.generic import FormView, DetailView
 
 from articleapp.forms import CreateArticleForm
-from articleapp.models import Article, TeamMember
+from articleapp.models import Article
 
 
 def createproject(request):
@@ -28,10 +28,9 @@ def createproject(request):
                 dev = form.cleaned_data['dev']
                 designer = form.cleaned_data['designer']
 
-                a = Article(Publisher= request.user, title=title, Introduce=Introduce, local=Local, lapse=lapse,
+                a = Article(publisher= request.user, title=title, Introduce=Introduce, local=Local, lapse=lapse,
                         deadline=deadline, now_pd=now_pd, now_dev=now_dev, now_designer=now_designer)
                 a.save()
-                TeamMember(project_id=a.id, pd=pd, dev=dev, designer=designer).save()
                 return redirect('articleapp:index')
     else:
         form = CreateArticleForm()
@@ -40,6 +39,10 @@ def createproject(request):
 
 def index(request):
     article_list = Article.objects.all()
-    members = TeamMember.objects.all()
-    return render(request, 'articleapp/index.html', {
-                                                     'members': members,  'article_list':article_list})
+    return render(request, 'articleapp/index.html', {'article_list':article_list})
+
+
+class ArticleDetailView(DetailView):
+    model = Article
+    context_object_name = 'target_article'
+    template_name = 'articleapp/detail.html'

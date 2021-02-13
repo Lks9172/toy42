@@ -1,5 +1,6 @@
 
 {% extends 'base.html' %}
+{%load static %}
 {% block content %}
 
 
@@ -20,12 +21,13 @@
 								document.write ( '<div class="dapibus">');
 							</script>
 
-										<h2>{{article.title}}</h2>
-										<p class="adm">Posted by <a href="#">{{article.Publisher}}</a>  |  7 days ago</p>
-										<a href="details.html"><img src="/static/images/img1.jpg" class="img-responsive" alt=""></a>
-										<p>{{article.Introduce }} </p>
+								<h4>{{article.title}}</h4>
+								<p class="adm">Posted by <a href="#">{{article.publisher}}</a>  |  7 days ago</p>
+								<a href="{% url 'articleapp:detail' pk=article.pk %}">
+									<img src="{{ article.thumbnail.url }}" class="img-responsive" alt=""></a>
+								<p>{{article.introduce }}</p>
+						 <a href="{% url 'articleapp:detail' pk=article.pk %}" class="link">Read More</a>
 							<script type="text/javascript">
-								document.write ( '<a href="details.html" class="link">Read More</a>');
 								document.write ( '</div></div></div>');
 							</script>
 							{% if forloop.counter|divisibleby:3 %}
@@ -53,6 +55,7 @@
 			        <!----//--->
 
 					<div class="clearfix"></div>
+					 						 <br>
 					 <div id="loadMore">
 						 <a href="{%url 'articleapp:index'%}">더 보기
 						 </a>
