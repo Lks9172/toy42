@@ -7,12 +7,12 @@ class Article(models.Model):
 
     publisher = ForeignKey(User, on_delete=models.CASCADE, related_name='article')
     title = CharField(max_length=20)
-    introduce = TextField(max_length=50)
-    content = CharField(max_length=100,  default=' ')
+    introduce = CharField(max_length=50)
+    content = TextField(max_length=100,  default=' ')
     deadline = IntegerField( default= 0)
     activation = BooleanField(default=True)
     question = CharField(max_length=30, default=' ')
-    thumbnail = ImageField()
+    thumbnail = ImageField(upload_to='images/', null=True)
 
     def __str__(self):
         return '%s by %s' % (self.publisher, self.title)

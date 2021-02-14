@@ -12,7 +12,7 @@ from articleapp.models import Article
 
 
 def index(request):
-    article_list = Article.objects.all()[:6]
+    article_list = Article.objects.all().order_by('-id')[:6]
     return render(request, 'accountapp/42toy.html', {'article_list':article_list})
 
 

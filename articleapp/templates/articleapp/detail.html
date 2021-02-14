@@ -4,7 +4,7 @@
 
 	<div class="details">
 		<div class="container">
-			<h2>{{target_article.introduce}}</h2>
+			<h2>{{target_article.title}}</h2>
 						<div class="det_text">
 				<p> {{target_article.introduce}}</p>
 			</div>
@@ -16,11 +16,11 @@
 			</div>
 			<ul class="links">
 				  		 <li><i class="date"> </i><span class="icon_text">July 14, 2014</span></li>
-				  		 <li><a href="#"><i class="admin"> </i><span class="icon_text">Admin</span></a></li>
+				  		 <li><a href="#"><i class="admin"> </i><span class="icon_text">{{target_article.publisher}}</span></a></li>
 				  		 <li class="last"><a href="#"><i class="permalink"> </i><span class="icon_text">지원하기</span></a></li>
 				    </ul>
 					<ul class="links_middle">
-			  		     <li><a href="#"><i class="title-icon"> </i><span class="icon_text">수정/삭제하기</span></a></li>
+			  		     <li><a href="{% url 'articleapp:update' pk=target_article.pk %}"><i class="title-icon"> </i><span class="icon_text">수정/삭제하기</span></a></li>
 				  		 <li><i class="tags"> </i><span class="icon_text">모집글 마감하기</span></li>
 		  		    </ul>
 					<ul class="links_bottom">

@@ -29,11 +29,13 @@
 							<li><a href="{%url 'accountapp:index' %}">HOME</a></li>
 							<li><a href="{%url 'articleapp:index' %}" data-hover="모집중인 프로젝트">모집중인 프로젝트</a></li>
 							<li><a  data-hover="프로젝트 후기">프로젝트 후기</a></li>
-							<li><a href="{%url 'articleapp:create'%}" data-hover="모집글 작성">모집글 작성</a></li>
 							  {% if user.is_active %}
-							<li><a href="{%url 'accountapp:login'%}" data-hover="로그인">로그인</a></li>
+							<li><a href="{%url 'articleapp:create'%}" data-hover="모집글 작성">모집글 작성</a></li>
+							<li><a href="{%url 'accountapp:logout'%}" data-hover="로그아웃">로그아웃</a></li>
 							{% else %}
-							<li><a href="{%url 'accountapp:logout'%}" data-hover="로그인">로그인</a></li>
+							<li><a href="{%url 'accountapp:login'%}" data-hover="모집글 작성">모집글 작성</a></li>
+							<li><a href="{%url 'accountapp:login'%}" data-hover="로그인">로그인</a></li>
+
 							{% endif %}
 							<div class="clearfix"> </div>
 						</ul>
