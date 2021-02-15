@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+
+	<div class="details">
+		<div class="container">
+			<h2>{{target_apply.offer.title}} 프로젝트</h2>
+				<P>{{target_apply.applicant.username}} 님의 지원</P>
+						<div class="det_text">
+
+				<p> {{target_apply.work}}</p>
+				<p> {{target_apply.language}}</p>
+			</div>
+
+			<div class="det_text">
+				<p>framwork :{{target_apply.framwork}}</p>
+				<p>answer :{{target_apply.answer}}</p>
+			</div>
+			<br><br><br>
+			<p><a href="{{ target_apply.file.url }}"target="_blank">개인 프로젝트 pdf 열기</a></p>
+
+        </div>
+    </div>
+{% endblock %}

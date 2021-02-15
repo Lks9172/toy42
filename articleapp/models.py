@@ -15,4 +15,4 @@ class Article(models.Model):
     thumbnail = ImageField(upload_to='images/', null=True)
 
     def __str__(self):
-        return '%s by %s' % (self.publisher, self.title)
+        return '[%s] 의 [%s]' % (self.publisher, self.title)

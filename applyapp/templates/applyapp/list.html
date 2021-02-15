@@ -3,30 +3,31 @@
 
 
 {% block content %}
-    <div class="btn-group">
-        <a href ="{% url 'articleapp:create' %}" class = "btn btn-info">Add Project</a>
-    </div>
-    <h2>내가 작성한 모집글</h2>
 
-    <p></p>
+    <div class="btn-group">
+        <a href ="{% url 'applyapp:create' %}" class = "btn btn-info">apply</a>
+    </div>
+    <h2>내가 작성한 지원글</h2>
     <table class = "table">
         <thead>
             <tr>
                 <th scope = "col">#</th>
-                <th scope = "col">제목</th>
-                <th scope = "col">작성자</th>
-                <th scope = "col">내용</th>
+                <th scope = "col">지원분야</th>
+                <th scope = "col">언어</th>
+                <th scope = "col">프레임워크</th>
+                <th scope = "col">프로젝트</th>
                 <th scope = "col">Modify</th>
                 <th scope = "col">Delete</th>
             </tr>
         </thead>
         <tbody>
-            {% for article in articles %}
+            {% for apply in applys %}
             <tr>
                 <td>{{forloop.counter}}</td>
-                <td><a >{{article.title}}</a></td>
-                <td><a >{{article.publisher}}</a></td>
-                <td><a >{{article.introduce}}</a> </td>
+                <td><a >{{apply.work}}</a></td>
+                <td><a >{{apply.language}}</a></td>
+                <td><a >{{apply.framwork}}</a> </td>
+                <td><a href="{% url 'articleapp:detail' pk=apply.offer_id %}">링크</a> </td>
                 <td><a class="btn btn-success btn-sm">Modify</a></td>
                 <td><a class="btn btn-danger btn-sm">Delete</a></td>
             </tr>

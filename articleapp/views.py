@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
+from django.db.models.fields.related import RelatedField
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
@@ -8,6 +9,7 @@ from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.views.generic import DetailView, CreateView, UpdateView
 
+from applyapp.models import Apply
 from articleapp.decorators import article_ownership_required
 from articleapp.forms import CreateArticleForm
 from articleapp.models import Article
@@ -57,4 +59,10 @@ def MyArticleList(request):
     user = request.user
     articles = Article.objects.filter(publisher_id=user.id)
     return render(request, 'articleapp/list.html', {'articles':articles})
+
+def ArticleApplyList(request):
+    a = request.POST.get('id')
+    article = Article.objects.filter(id=a)
+    applys = Apply.objects.filter(offer_id=a)
+    return render(request, 'articleapp/applylist.html', {'applys':applys, 'article':article})
 
