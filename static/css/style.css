@@ -961,6 +961,10 @@ ul#myList {
 	display: block;
 	margin: 1em 0;
 }
+#sform {
+          display: inline-block;
+          text-align: center;
+        }
 #commentform textarea {
 	padding: 13px 20px;
 	width: 60%;
@@ -968,13 +972,14 @@ ul#myList {
 	font-size: 0.85em;
 	outline: none;
 	height: 150px;
-	display: block;
-	resize: none;
+    display: inline-block;
+    resize: none;
 	font-weight: 400;
 	border: 1px solid #eee;
 	background: #eee;
 	margin: 1em 0;
 }
+
 .lev {
 	margin: 2em 0;
 }

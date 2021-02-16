@@ -17,7 +17,7 @@
                 <th scope = "col">프레임워크</th>
                 <th scope = "col">프로젝트</th>
                 <th scope = "col">Modify</th>
-                <th scope = "col">Delete</th>
+                <th scope = "col">결정!</th>
             </tr>
         </thead>
         <tbody>
@@ -29,7 +29,13 @@
                 <td><a >{{apply.framwork}}</a> </td>
                 <td><a href="{% url 'articleapp:detail' pk=apply.offer_id %}">링크</a> </td>
                 <td><a class="btn btn-success btn-sm">Modify</a></td>
-                <td><a class="btn btn-danger btn-sm">Delete</a></td>
+                {% if apply.decision == 1 %}
+                <td><a >결정 전입니다!</a> </td>
+                {% elif apply.decision == 2 %}
+                <td><a >수락!</a> </td>
+                {% else %}
+                <td><a >거절</a> </td>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>

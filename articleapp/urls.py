@@ -13,4 +13,5 @@ urlpatterns = [
     path('update/<int:pk>', ArticleUpdateView.as_view(), name='update'),
     path('mylist/', MyArticleList, name='mylist'),
     path('applylist/', ArticleApplyList, name='applylist'),
+
 ]

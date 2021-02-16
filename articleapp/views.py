@@ -61,8 +61,9 @@ def MyArticleList(request):
     return render(request, 'articleapp/list.html', {'articles':articles})
 
 def ArticleApplyList(request):
-    a = request.POST.get('id')
-    article = Article.objects.filter(id=a)
-    applys = Apply.objects.filter(offer_id=a)
-    return render(request, 'articleapp/applylist.html', {'applys':applys, 'article':article})
+    if request.method == 'POST':
+        a = request.POST.get('id')
+        article = Article.objects.filter(id=a)
+        applys = Apply.objects.filter(offer_id=a)
+        return render(request, 'articleapp/applylist.html', {'applys':applys, 'article':article})
 

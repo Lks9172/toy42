@@ -19,7 +19,11 @@
 			</div>
 			<br><br><br>
 			<p><a href="{{ target_apply.file.url }}"target="_blank">개인 프로젝트 pdf 열기</a></p>
-
+			<form action="{% url 'applyapp:decision'%}" method="post">
+								{% csrf_token %}
+								<input type="hidden" name="id" value="{{target_apply.id}}">
+								<input type="submit" value="결정하러가기">
+							</form>
         </div>
     </div>
 {% endblock %}

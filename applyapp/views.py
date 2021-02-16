@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.contrib.auth.models import User
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.urls import reverse
@@ -23,6 +24,7 @@ class ApplyCreateView(CreateView):
     def get_success_url(self):
         return reverse('articleapp:index')
 
+
 class ApplyDetailView(DetailView):
     model = Apply
     context_object_name = 'target_apply'
@@ -33,4 +35,26 @@ def MyApplyList(request):
     user = request.user
     applys = Apply.objects.filter(applicant_id=user.id)
     return render(request, 'applyapp/list.html', {'applys':applys})
+
+
+def DecisionApply(request):
+    if request.method == 'POST':
+        applys = Apply.objects.filter(id=request.POST.get('id'))
+        return render(request, 'applyapp/applydecision.html', {'applys': applys})
+
+
+def Comment(request):
+    if request.method == 'POST':
+        apply = Apply.objects.filter(id=request.POST.get('id'))
+        for i in apply:
+            i.comment = request.POST.get('comment')
+            if request.POST.get('yes'):
+                i.decision = 2
+            else:
+                i.decision = 3
+            article_id = i.offer_id
+            i.save()
+        article = Article.objects.filter(id=article_id)
+        applys = Apply.objects.filter(offer_id=article_id)
+        return render(request, 'articleapp/applylist.html', {'applys':applys, 'article':article})
 

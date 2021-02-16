@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+{% for apply in applys %}
+    <div style="text-align: center;margin: 4rem auto"  display="inline-block";>
+    <form style="text-align: center;"id="commentform" action="{% url 'applyapp:comment'%}" method="post">
+                    {% csrf_token %}
+
+						<label for="comment">코멘트 작성</label>
+						<textarea name="comment" id="comment"></textarea>
+					 <div class="clearfix"></div>
+			           <input name="yes" type="submit" id="yes" value="수락">
+                        <input name="no" type="submit" id="no" value="거절">
+        								<input type="hidden" name="id" value="{{apply.id}}">
+                    <div class="clearfix"></div>
+				   </form>
+    </div>
+{% endfor %}
+        {% endblock %}
