@@ -89,9 +89,9 @@ WSGI_APPLICATION = 'toy42.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'toy42',
-        'USER': 'lks',
+        'USER': 'root',
         'PASSWORD': env("DATABASE"),
         'HOST' : 'localhost',
         'PORT' :'',
