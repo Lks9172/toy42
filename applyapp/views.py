@@ -1,15 +1,22 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.urls import reverse
+from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView
 
+from applyapp.decorators import article_ownership_required
 from applyapp.forms import ApplyForm
 from applyapp.models import Apply
 from articleapp.models import Article
 
+has_ownership = [article_ownership_required, login_required]
 
+
+@method_decorator(login_required, 'post')
+@method_decorator(login_required, 'get')
 class ApplyCreateView(CreateView):
     model = Apply
     form_class = ApplyForm
@@ -22,6 +29,7 @@ class ApplyCreateView(CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
+        print(self.request)
         return reverse('articleapp:index')
 
 
@@ -29,6 +37,7 @@ class ApplyDetailView(DetailView):
     model = Apply
     context_object_name = 'target_apply'
     template_name = 'applyapp/detail.html'
+
 
 
 def MyApplyList(request):

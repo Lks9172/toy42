@@ -8,11 +8,15 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.views.generic import DetailView, CreateView, UpdateView
+from django.views.generic.edit import FormMixin
 
 from applyapp.models import Apply
 from articleapp.decorators import article_ownership_required
 from articleapp.forms import CreateArticleForm
 from articleapp.models import Article
+from commentapp.forms import CommentCreationForm
+
+has_ownership = [article_ownership_required, login_required]
 
 
 def index(request):
@@ -37,14 +41,15 @@ class ArticleCreateView(CreateView):
         return reverse('articleapp:detail', kwargs={'pk':self.object.pk})
 
 
-class ArticleDetailView(DetailView):
+class ArticleDetailView(DetailView, FormMixin):
     model = Article
+    form_class = CommentCreationForm
     context_object_name = 'target_article'
     template_name = 'articleapp/detail.html'
 
 
-@method_decorator(article_ownership_required, 'get')
-@method_decorator(article_ownership_required, 'post')
+@method_decorator(has_ownership, 'get')
+@method_decorator(has_ownership, 'post')
 class ArticleUpdateView(UpdateView):
     model = Article
     context_object_name = 'target_article'
@@ -59,6 +64,7 @@ def MyArticleList(request):
     user = request.user
     articles = Article.objects.filter(publisher_id=user.id)
     return render(request, 'articleapp/list.html', {'articles':articles})
+
 
 def ArticleApplyList(request):
     if request.method == 'POST':

@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.shortcuts import render
@@ -9,6 +10,7 @@ from django.views.generic import CreateView
 
 from accountapp.forms import CreateUserForm
 from articleapp.models import Article
+
 
 
 def index(request):

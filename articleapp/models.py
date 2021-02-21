@@ -13,6 +13,7 @@ class Article(models.Model):
     activation = BooleanField(default=True)
     question = CharField(max_length=30, default=' ')
     thumbnail = ImageField(upload_to='images/', null=True)
+    created_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return '[%s] 의 [%s]' % (self.publisher, self.title)

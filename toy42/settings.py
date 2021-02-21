@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'accountapp',
     'articleapp',
     'applyapp',
+    'commentapp',
     'bootstrap4',
 ]
 
@@ -91,7 +92,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'toy42',
         'USER': 'lks',
-        'PASSWORD' : '91729787',
+        'PASSWORD': env("DATABASE"),
         'HOST' : 'localhost',
         'PORT' :'',
     }
