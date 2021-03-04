@@ -5,5 +5,4 @@
 2021.01.30 - 회원가입, 로그인, 로그아웃 구현완료
 
 
-- commit message template setting
-
+- commit message template setting2
