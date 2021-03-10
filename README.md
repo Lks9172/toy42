@@ -26,7 +26,7 @@
    adobeXD를 사용하여 기획하였습니다.
 ```     
 
-- 
+- django, bootstrap, mysql을 사용했습니다.
 
 
 
