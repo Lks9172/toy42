@@ -28,7 +28,6 @@
 ``` 
     python 3.8
     asgiref==3.3.1
-    beautifulsoup4==4.9.3
     Django==3.1.5
     django-bootstrap4==2.3.1
     django-environ==0.4.5
